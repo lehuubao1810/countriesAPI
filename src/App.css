@@ -1,38 +1,326 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700;800;900&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Nunito Sans', sans-serif;
+}
+
 .App {
-  text-align: center;
+  height: 100%;
+  background-color: hsl(207, 26%, 17%); 
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.nav {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 80px;
+  background: hsl(209, 23%, 22%);
+  color: hsl(0, 0%, 98%);
+  margin-bottom: 50px;
+}
+.logo {
+  text-decoration: none;
+  color: hsl(0, 0%, 98%);
+  font-weight: bold;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.themeBtn {
+  background: none;
+  border: none;
+  color: hsl(0, 0%, 98%);;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 10px 20px;
+}
+
+.themeBtn i {
+  margin-right: 10px;
+}
+
+.themeBtn:hover {
+  border-radius: 5px;
+  background-color: hsl(208, 23%, 31%);
+}
+
+section {
+  padding: 0 80px;
+}
+
+.tools {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+
+.search-box {
+  position: relative;
+}
+
+.search-box input {
+  width: 450px;
+  height: 50px;
+  padding: 0 20px 0 60px;
+  color: hsl(0, 0%, 98%);
+  border: none;
+  border-radius: 5px;
+  background-color: hsl(209, 23%, 22%);
+}
+
+.search-box input:hover {
+  background-color: hsl(208, 23%, 31%);
+}
+
+.search-box input:focus {
+  outline: none;
+  background-color: hsl(208, 23%, 31%);
+}
+
+.search-box input::placeholder {
+  color: #ffffffab;
+}
+
+.searchBtn {
+  height: 100%;
+  background: none;
+  border: none;
+  position: absolute;
+
+  left: 25px;
+}
+
+.searchBtn i {
+  font-size: 16px;
+  color: hsl(0, 0%, 98%);;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.fillter-box select {
+  width: 200px;
+  height: 50px;
+  padding: 0 20px;
+  color: hsl(0, 0%, 98%);;
+  border: none;
+  border-radius: 5px;
+  background-color: hsl(209, 23%, 22%);
+  cursor: pointer;
+
+  /* arrow */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="white" d="M7 10l5 5 5-5z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 15px top 50%, 0 0;
+  background-size: 20px auto, 100%;
+}
+
+.fillter-box select:hover {
+  background-color: hsl(208, 23%, 31%);
+}
+
+.fillter-box select:focus {
+  outline: none;
+  background-color: hsl(208, 23%, 31%);
+}
+
+
+.CountriesList {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 60px;
+}
+
+.country-box {
+  width: 100%;
+  height: 100%;
+  background-color: hsl(209, 23%, 22%);
+  border-radius: 5px;
+  margin-bottom: 50px;
+  /* box-shadow: inset 0 0 0 1px hsl(209, 23%, 22%); */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  /* text-decoration: none; */
+}
+
+.country-box:hover {
+  transform: scale(1.025);
+  background-color: hsl(208, 23%, 31%);
+}
+
+.country-box img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 5px 5px 0 0;
+}
+
+.country-info {
+  padding: 20px 20px 0 20px;
+  color: hsl(0, 0%, 98%);
+}
+
+.country-info h4 {
+  margin-bottom: 15px;
+}
+
+.country-box p {
+  font-size: 14px;
+  font-weight: 300;
+  margin-bottom: 5px;
+}
+.country-box span {
+  font-weight: bold;
+}
+
+/* Loading */
+.is-list-loading {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 60px;
+  margin-bottom: 100px;
+}
+
+.loading-element .img {
+  height: 160px;
+  background: linear-gradient(110deg, hsl(208, 23%, 31%) 8%, hsl(207, 23%, 41%) 18%, hsl(208, 23%, 31%) 33%);
+  border-radius: 5px 5px 0 0;
+  animation: 1.5s shine linear infinite;
+  background-size: 200% 100%;
+}
+.loading-info {
+  border-radius: 0 0 5px 5px;
+  padding: 20px 20px 0 20px;
+  height: 190px;
+  background-color: hsl(209, 23%, 22%);
+  
+}
+.loading-info h4 {
+  height: 20px;
+  background: linear-gradient(110deg, hsl(208, 23%, 31%) 8%, hsl(207, 23%, 41%) 18%, hsl(208, 23%, 31%) 33%);
+  margin-bottom: 25px;
+  border-radius: 3px;
+  animation: 1.5s shine linear infinite;
+  background-size: 200% 100%;
+}
+.loading-info p {
+  height: 15px;
+  background: linear-gradient(110deg, hsl(208, 23%, 31%) 8%, hsl(207, 23%, 41%) 18%, hsl(208, 23%, 31%) 33%);
+  border-radius: 3px;
+  margin-bottom: 10px;
+  animation: 1.5s shine linear infinite;
+  background-size: 200% 100%;
+}
+@keyframes shine {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -200% 0;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Country page */
+
+.btnBack {
+  display: inline-block;
+  border: none;
+  color: #ffffffab;
+  font-size: 16px;
+  font-weight: 300;
+  cursor: pointer;
+  padding: 10px 40px;
+  background-color: hsl(209, 23%, 22%);
+  border-radius: 5px;
+  box-shadow: 0 0 10px 2px hsl(208, 25%, 12%);
+  margin-bottom: 50px;
+  text-decoration: none;
+}
+
+.btnBack i {
+  margin-right: 10px;
+}
+
+.btnBack:hover {
+  background-color: hsl(208, 23%, 31%);
+}
+
+.countryDetail {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 80px;
+}
+.countryDetail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.countryDetailInfo {
+  color:hsl(0, 0%, 98%);
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+}
+.countryDetailInfo h1 {
+  margin-bottom: 25px;
+  font-size: 30px;
+}
+.countryDetailInfoList {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
 }
 
-.App-link {
-  color: #61dafb;
+.countryDetailInfoList p{
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: 300;
+}
+.countryDetailInfoList span {
+  font-weight: 600;
+}
+.borderCountries {
+  width: 100%;
+  font-size: 14px;
+  display: flex;
+
+}
+.borderCountries h4 {
+  margin-right: 15px;
+  font-weight: 600;
+}
+   
+.borderCountry button {
+  font-size: 14px;
+  padding: 4px 20px;
+  border-radius: 2px;
+  border: none;
+  color: #ffffffab;
+  background: hsl(209, 23%, 22%);
+  box-shadow: 0 0 10px 2px hsl(208, 25%, 12%);
+  margin-right: 10px;
+  cursor: pointer;
+}
+.borderCountry button:hover {
+  background: hsl(208, 23%, 31%);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/*  */
+.footer {
+  margin-top: 20px;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: hsl(209, 23%, 22%);
+  color: hsl(0, 0%, 98%);;
 }
