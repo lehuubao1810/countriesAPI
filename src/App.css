@@ -259,7 +259,6 @@ section {
   margin-bottom: 50px;
 }
 .countryDetail img {
-  width: 100%;
   height: 100%;
   object-fit: cover;
   width: 45%;
@@ -279,7 +278,6 @@ section {
   display: flex;
   justify-content: space-between;
   margin-bottom: 40px;
-
 }
 
 .countryDetailInfoList p{
@@ -430,5 +428,29 @@ section {
   .loading-element .img {
     height: 180px;
   }
-
+  /* Country Detail */
+  .countryDetail {
+    flex-direction: column;
+  }
+  .countryDetail img {
+    width: 100%;
+    margin-bottom: 40px;
+  }
+  .countryDetailInfo {
+    width: 100%;
+  }
+  .countryDetailInfoList {
+    flex-direction: column;
+  }
+  /* Loading detail */
+  .loadingDetail {
+    flex-direction: column;
+  }
+  .loadingDetail .img {
+    width: 100%;
+    margin-bottom: 40px;
+  }
+  .LoadingCountryInfoList {
+    flex-direction: column;
+  }
 }
