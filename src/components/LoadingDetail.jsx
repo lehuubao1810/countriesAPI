@@ -1,16 +1,30 @@
-
-
-function LoadingDetail(props) {
+function LoadingDetail() {
     return (
-        <div className="country-box">
-            <img src={props.flag} alt={props.alt} />
-            <div className="country-info">
-                <h4> {props.name} </h4>
-                <p> <span>Population:</span>   {props.population} </p>
-                <p> <span>Region:</span>   {props.region} </p>
-                <p> <span>Capital:</span>   {props.capital} </p>
-            </div>
-        </div>
+        <>
+                <div className="loadingDetail">
+                    <div className="img"></div>
+                    <div className="loadingCountryInfo">
+                        <h1></h1>
+                        <div className="LoadingCountryInfoList">
+                            <div className="LoadingcountryInfoListCol">
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                            </div>
+                            <div className="LoadingcountryInfoListCol">
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                            </div>
+                        </div>
+                        <div className="LoadingBorderCountries">
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+        </>
     )
 }
 

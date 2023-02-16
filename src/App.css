@@ -8,6 +8,7 @@
 }
 
 .App {
+  width: 100%;
   height: 100%;
   background-color: hsl(207, 26%, 17%); 
 }
@@ -254,20 +255,22 @@ section {
 
 .countryDetail {
   width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 80px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
 }
 .countryDetail img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  width: 45%;
 }
 .countryDetailInfo {
   color:hsl(0, 0%, 98%);
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 45%;
 }
 .countryDetailInfo h1 {
   margin-bottom: 25px;
@@ -277,6 +280,7 @@ section {
   display: flex;
   justify-content: space-between;
   margin-bottom: 40px;
+
 }
 
 .countryDetailInfoList p{
@@ -286,19 +290,20 @@ section {
 }
 .countryDetailInfoList span {
   font-weight: 600;
+} 
+.countryDetailInfoListCol1 {
+  margin-right: 25px;
 }
 .borderCountries {
   width: 100%;
   font-size: 14px;
-  display: flex;
-
 }
-.borderCountries h4 {
-  margin-right: 15px;
+.borderCountries span {
+  margin-right: 10px;
   font-weight: 600;
 }
    
-.borderCountry button {
+.btnBorderCountry {
   font-size: 14px;
   padding: 4px 20px;
   border-radius: 2px;
@@ -307,10 +312,64 @@ section {
   background: hsl(209, 23%, 22%);
   box-shadow: 0 0 10px 2px hsl(208, 25%, 12%);
   margin-right: 10px;
+  margin-bottom: 10px;
   cursor: pointer;
 }
-.borderCountry button:hover {
+.btnBorderCountry:hover {
   background: hsl(208, 23%, 31%);
+}
+/* Loading Detail */
+.loadingDetail {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+.loadingDetail .img {
+  width: 45%;
+  height: 350px;
+  background: linear-gradient(110deg, hsl(208, 23%, 31%) 8%, hsl(207, 23%, 41%) 18%, hsl(208, 23%, 31%) 33%);
+  animation: 1.5s shine linear infinite;
+  background-size: 200% 100%;
+}
+.loadingCountryInfo {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.loadingCountryInfo h1 {
+  width: 200px;
+  height: 30px;
+  background: linear-gradient(110deg, hsl(208, 23%, 31%) 8%, hsl(207, 23%, 41%) 18%, hsl(208, 23%, 31%) 33%);
+  margin-bottom: 35px;
+  border-radius: 3px;
+  animation: 1.5s shine linear infinite;
+  background-size: 200% 100%;
+}
+.LoadingCountryInfoList {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+.LoadingcountryInfoListCol p {
+  width: 200px;
+  height: 15px;
+  background: linear-gradient(110deg, hsl(208, 23%, 31%) 8%, hsl(207, 23%, 41%) 18%, hsl(208, 23%, 31%) 33%);
+  border-radius: 3px;
+  margin-bottom: 15px;
+  animation: 1.5s shine linear infinite;
+  background-size: 200% 100%;
+}
+.LoadingBorderCountries p{
+  width: 200px;
+  height: 15px;
+  background: linear-gradient(110deg, hsl(208, 23%, 31%) 8%, hsl(207, 23%, 41%) 18%, hsl(208, 23%, 31%) 33%);
+  border-radius: 3px;
+  margin-bottom: 15px;
+  animation: 1.5s shine linear infinite;
+  background-size: 200% 100%;
 }
 
 /*  */
@@ -323,4 +382,41 @@ section {
   align-items: center;
   background-color: hsl(209, 23%, 22%);
   color: hsl(0, 0%, 98%);;
+}
+
+/* break point 375px */
+@media screen and (max-width: 375px) {
+  .nav {
+    padding: 0 15px;
+  }
+  section {
+    padding: 0 15px;
+  }
+  .tools {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .search-box input {
+    width: 80%;
+
+  }
+  .fillter-box {
+    margin-top: 40px;
+  }
+  .fillter-box select {
+    width: 50%;
+  }
+  .CountriesList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+  }
+  .country-box {
+    width: 50%;
+  }
+  .country-box img {
+    height: 120px;
+  }
 }

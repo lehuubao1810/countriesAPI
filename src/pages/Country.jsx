@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
+import LoadingDetail from "../components/LoadingDetail";
 
 function CountryDetail() {
 
@@ -41,9 +42,37 @@ function CountryDetail() {
                 setLoading(false);
             });
     }, []);
-    const handleBorderCountries = (e) => {
+
+    const handleBorderCountry = (e) => {
         const nameCountry = e.target.value;
+        console.log(nameCountry);
         navigate(`/country/${nameCountry}`);
+        setLoading(true);
+        fetch(`https://restcountries.com/v3.1/name/${nameCountry}`)
+            .then((res) => res.json())
+            .then((data) => {
+                setCountry(data);
+                setCountryCode(Object.keys(data[0].name.nativeName)[0]);
+                setCountryCurrency(Object.keys(data[0].currencies)[0]);
+                if (Object.keys(data[0]).includes("borders") === false) {
+                    setBorderCountries(["No border countries"]);
+                }
+                else {
+                    setBorderCountries([]);
+                    const sub_borderCountries = [...data[0].borders];
+                    sub_borderCountries.map((borderCountry) => {
+                        fetch(`https://restcountries.com/v3.1/alpha/${borderCountry}`)
+                            .then((res) => res.json())
+                            .then((data) => {
+                                console.log(data[0].name.common);
+                                setBorderCountries((prev) => [...prev, data[0].name.common]);
+                                console.log(borderCountries);
+                            });
+                    });
+                }
+
+                setLoading(false);
+            });
     }
 
     return (
@@ -59,7 +88,7 @@ function CountryDetail() {
                 </Link>
 
                 {loading ?
-                    <h1>Loading...</h1>
+                    <LoadingDetail />
                     :
                     <div className="countryDetail">
                         <img src={country[0].flags.png} alt="" />
@@ -80,16 +109,21 @@ function CountryDetail() {
                                 </div>
                             </div>
                             <div className="borderCountries">
-                                <h4>Border countries: </h4>
+                                <span>Border countries: </span>
                                 {
                                     borderCountries[0] === "No border countries" ?
-                                    <p>No border countries</p>
-                                    :
-                                    borderCountries.map((borderCountry, index) => (
-                                    <div key={index} className="borderCountry">
-                                        <button value={borderCountry} onClick={handleBorderCountries}>{borderCountry}</button>
-                                    </div>
-                                ))}
+                                        <span>No border countries</span>
+                                        :
+                                        borderCountries.map((borderCountry, index) => (
+                                            <button
+                                                key={index}
+                                                className="btnBorderCountry"
+                                                value={borderCountry}
+                                                onClick={handleBorderCountry}
+                                            >
+                                                {borderCountry}
+                                            </button>
+                                        ))}
                             </div>
                         </div>
                     </div>
