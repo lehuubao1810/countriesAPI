@@ -86,7 +86,6 @@ function CountryDetail() {
                     <i className="fa-solid fa-arrow-left-long"></i>
                     Back
                 </Link>
-
                 {loading ?
                     <LoadingDetail />
                     :
